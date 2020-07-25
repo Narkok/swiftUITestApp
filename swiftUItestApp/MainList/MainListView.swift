@@ -42,6 +42,3 @@ struct MainListView_Previews: PreviewProvider {
         MainListView()
     }
 }
-
-
-//UIDevice.current.identifierForVendor?.uuidString
