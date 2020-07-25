@@ -26,7 +26,6 @@ struct UserInfo: Codable, Comparable, Hashable {
     let email: String
     let avatarURL: String?
     let updatedAt: String
-    let deviceID: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -35,7 +34,10 @@ struct UserInfo: Codable, Comparable, Hashable {
         case email
         case avatarURL
         case updatedAt
-        case deviceID
+    }
+    
+    var avatarLink: URL? {
+        return avatarURL.map { URL(string: $0) } ?? nil
     }
     
     init(name: String, email: String) {
@@ -43,8 +45,7 @@ struct UserInfo: Codable, Comparable, Hashable {
         self.firstName = name
         self.lastName = "Kek"
         self.email = email
-        self.avatarURL = ""
+        self.avatarURL = "https://images.unsplash.com/flagged/photo-1595453686305-f7967f307225?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=642&q=80"
         self.updatedAt = ""
-        self.deviceID = ""
     }
 }

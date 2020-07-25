@@ -10,11 +10,13 @@ import SwiftUI
 
 struct MainListView: View {
     
-    let backgroundColor = UIColor(white: 0.95, alpha: 1)
+    static let backgroundColor = UIColor(white: 0.95, alpha: 1)
+    
+    @ObservedObject var viewModel = MainListViewModel(MockUsersService())
     
     
     init() {
-        UIScrollView.appearance().backgroundColor = backgroundColor
+        UIScrollView.appearance().backgroundColor = MainListView.backgroundColor
     }
     
     
@@ -23,7 +25,7 @@ struct MainListView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     SeparatorCell(height: 10)
-                    ForEach(testUserList, id: \.self) { data in
+                    ForEach(self.viewModel.usersList, id: \.self) { data in
                         UserCellView(data: data)
                     }
                     SeparatorCell(height: 10)
@@ -43,23 +45,3 @@ struct MainListView_Previews: PreviewProvider {
 
 
 //UIDevice.current.identifierForVendor?.uuidString
-
-
-let testUserList: [UserCellView.Data] = [
-    .init(userInfo: UserInfo(name: "Lol1", email: "qwe@qwe.qwe"), position: .top),
-    .init(userInfo: UserInfo(name: "Lol2", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol3", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol2", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol3", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol2", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol3", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol2", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol3", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol2", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol3", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol2", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol3", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol2", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol3", email: "qwe@qwe.qwe"), position: .middle),
-    .init(userInfo: UserInfo(name: "Lol4", email: "qwe@qwe.qwe"), position: .bottom)
-]

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB1FE46C24CC424900532DD7 /* MainListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1FE46B24CC424900532DD7 /* MainListViewModel.swift */; };
+		EB1FE46F24CC510400532DD7 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1FE46E24CC510400532DD7 /* UsersService.swift */; };
+		EB1FE47124CC650700532DD7 /* MockUsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1FE47024CC650700532DD7 /* MockUsersService.swift */; };
 		EB7F268724CB75A600CD1FED /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7F268624CB75A600CD1FED /* DateFormatterExtension.swift */; };
 		EB8352B224CB6FC400F2E95E /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8352B124CB6FC400F2E95E /* UserCellView.swift */; };
 		EB8352B424CB70E500F2E95E /* SeparatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8352B324CB70E500F2E95E /* SeparatorCellView.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB1FE46B24CC424900532DD7 /* MainListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewModel.swift; sourceTree = "<group>"; };
+		EB1FE46E24CC510400532DD7 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
+		EB1FE47024CC650700532DD7 /* MockUsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUsersService.swift; sourceTree = "<group>"; };
 		EB7F268624CB75A600CD1FED /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		EB8352B124CB6FC400F2E95E /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
 		EB8352B324CB70E500F2E95E /* SeparatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCellView.swift; sourceTree = "<group>"; };
@@ -55,10 +61,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB1FE46D24CC50F100532DD7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EB1FE46E24CC510400532DD7 /* UsersService.swift */,
+				EB1FE47024CC650700532DD7 /* MockUsersService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		EB8352AE24CB6F4900F2E95E /* MainList */ = {
 			isa = PBXGroup;
 			children = (
 				EBCC3CA424C8E0E000EC54FA /* MainListView.swift */,
+				EB1FE46B24CC424900532DD7 /* MainListViewModel.swift */,
 			);
 			path = MainList;
 			sourceTree = "<group>";
@@ -122,6 +138,7 @@
 		EBCC3C9F24C8E0E000EC54FA /* swiftUItestApp */ = {
 			isa = PBXGroup;
 			children = (
+				EB1FE46D24CC50F100532DD7 /* Service */,
 				EB8352BF24CB729700F2E95E /* Models */,
 				EB8352B024CB6F8500F2E95E /* CustomViews */,
 				EB8352AE24CB6F4900F2E95E /* MainList */,
@@ -218,12 +235,15 @@
 				EB7F268724CB75A600CD1FED /* DateFormatterExtension.swift in Sources */,
 				EBCC3CA124C8E0E000EC54FA /* AppDelegate.swift in Sources */,
 				EBA7391724CC3B7F00B2CA8E /* ActivityIndicator.swift in Sources */,
+				EB1FE47124CC650700532DD7 /* MockUsersService.swift in Sources */,
+				EB1FE46C24CC424900532DD7 /* MainListViewModel.swift in Sources */,
 				EB8352BA24CB716100F2E95E /* ColorView.swift in Sources */,
 				EBA7391524CC384600B2CA8E /* AsyncImage.swift in Sources */,
 				EBCC3CA324C8E0E000EC54FA /* SceneDelegate.swift in Sources */,
 				EBCC3CA524C8E0E000EC54FA /* MainListView.swift in Sources */,
 				EB8352B224CB6FC400F2E95E /* UserCellView.swift in Sources */,
 				EB8352BE24CB728800F2E95E /* UserInfo.swift in Sources */,
+				EB1FE46F24CC510400532DD7 /* UsersService.swift in Sources */,
 				EB8352B424CB70E500F2E95E /* SeparatorCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

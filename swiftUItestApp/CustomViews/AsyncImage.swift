@@ -10,10 +10,11 @@ import SwiftUI
 
 struct AsyncImage<Placeholder: View>: View {
     @ObservedObject private var loader: ImageLoader
+    
     private let placeholder: Placeholder?
     private let configuration: (Image) -> Image
     
-    init(url: URL, cache: ImageCache? = nil, placeholder: Placeholder? = nil, configuration: @escaping (Image) -> Image = { $0 }) {
+    init(url: URL?, cache: ImageCache? = nil, placeholder: Placeholder? = nil, configuration: @escaping (Image) -> Image = { $0 }) {
         loader = ImageLoader(url: url, cache: cache)
         self.placeholder = placeholder
         self.configuration = configuration
@@ -29,6 +30,8 @@ struct AsyncImage<Placeholder: View>: View {
         Group {
             if loader.image != nil {
                 configuration(Image(uiImage: loader.image!))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             } else {
                 placeholder
             }
@@ -45,13 +48,13 @@ class ImageLoader: ObservableObject {
     
     private(set) var isLoading = false
     
-    private let url: URL
+    private let url: URL?
     private var cache: ImageCache?
     private var cancellable: AnyCancellable?
     
     private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
     
-    init(url: URL, cache: ImageCache? = nil) {
+    init(url: URL?, cache: ImageCache? = nil) {
         self.url = url
         self.cache = cache
     }
@@ -62,6 +65,8 @@ class ImageLoader: ObservableObject {
     
     func load() {
         guard !isLoading else { return }
+        
+        guard let url = url else { return }
 
         if let image = cache?[url] {
             self.image = image
@@ -93,6 +98,7 @@ class ImageLoader: ObservableObject {
     }
     
     private func cache(_ image: UIImage?) {
+        guard let url = url else { return }
         image.map { cache?[url] = $0 }
     }
 }

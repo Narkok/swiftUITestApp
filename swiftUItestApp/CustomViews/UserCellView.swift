@@ -24,6 +24,7 @@ struct UserCellView: View {
         case .top:    self.roundedCornens = [.topLeft, .topRight]
         case .bottom: self.roundedCornens = [.bottomLeft, .bottomRight]
         case .middle: self.roundedCornens = []
+        case .single: self.roundedCornens = [.allCorners]
         }
     }
     
@@ -53,20 +54,22 @@ struct UserCellView: View {
                 }
             }
 
-            HStack(alignment: .center, spacing: 16) {
-                AsyncImage(url: URL(string: "http://nrkk.ru/frogogoTestAppAvatars/avatar4.png")!,
+            HStack(alignment: .center, spacing: 12) {
+                AsyncImage(url: self.userInfo.avatarLink,
                            cache: self.cache,
-                           placeholder: ActivityIndicator(),
-                           configuration: { $0.resizable() })
+                           placeholder: ActivityIndicator())
                     .frame(width: 60, height: 60, alignment: .leading)
                     .cornerRadius(30)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(userInfo.firstName + " " + userInfo.lastName)
+                        .font(.callout)
+                        .fontWeight(.medium)
                         .frame(alignment: .leading)
                     Text(userInfo.email)
                         .font(.subheadline)
                         .foregroundColor(.gray)
+                        .fontWeight(.regular)
                         .frame(alignment: .leading)
                 }
                 Spacer()
@@ -91,5 +94,6 @@ extension UserCellView {
         case top
         case bottom
         case middle
+        case single
     }
 }
